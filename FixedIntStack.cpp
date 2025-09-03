@@ -40,6 +40,8 @@ int main()
 {
     // FixedIntStack with capacity 5
     FixedIntStack *s = new FixedIntStack(5);  
+    
+    printf("Memory Address: %p\n", *s);
 
     s->push(10);
     s->push(20);
@@ -57,7 +59,6 @@ int main()
         printf("s had been deleted and not dangled");    
     } else {
         printf("Undefined Behavior: %d", s->top());
-        *s = new FixedIntStack(10);
     }
     
     return 0;
