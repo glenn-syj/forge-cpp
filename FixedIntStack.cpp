@@ -13,7 +13,11 @@ public:
         topIdx = -1;
     }
     
-    ~FixedIntStack() { delete[] arr; }
+    ~FixedIntStack() {
+        printf("Destructor called: arr address: %p\n", arr);
+        delete[] arr; 
+        arr = nullptr;
+    }
     
     void push(int x) {
         if (topIdx + 1 < capacity)
@@ -41,7 +45,10 @@ int main()
     // FixedIntStack with capacity 5
     FixedIntStack *s = new FixedIntStack(5);  
     
-    printf("Memory Address: %p\n", *s);
+    // This one creates a new instance, which leads to call destructor
+    printf("Memory Address with value: %p\n", *s);
+    // The memory address is different from the above
+    printf("Memory Address with pointer itself: %p\n", s);
 
     s->push(10);
     s->push(20);
